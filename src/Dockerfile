@@ -6,7 +6,7 @@ ENV PYTHONFAULTHANDLER 1
 
 WORKDIR /src
 
-COPY requirements.txt .
+COPY requirements.txt /src
 
 RUN pip3 install -r requirements.txt
 
