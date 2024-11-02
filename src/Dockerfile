@@ -6,11 +6,11 @@ ENV PYTHONFAULTHANDLER 1
 
 WORKDIR /src
 
-COPY requirements.txt /src
+COPY src/requirements.txt /src/requirements.txt
 
 RUN pip3 install -r requirements.txt
 
-COPY . /src
+COPY src/ /src
 
 EXPOSE 5001
 
