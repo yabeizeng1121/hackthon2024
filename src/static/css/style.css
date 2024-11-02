@@ -1,0 +1,168 @@
+/* static/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header_top{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    align-items: start;
+}
+
+.container {
+    display: flex; /* Establishes a flex container */
+    justify-content: center; /* Centers children horizontally */
+    align-items: start; /* Aligns children to the start of the flex container vertically */
+    padding: 20px;
+    background-color: #f4f4f4;
+    width: 100%; /* Ensure the container takes full width of its parent */
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;         /* Enable Flexbox */
+    align-items: center;   /* Center items vertically */
+    justify-content: space-between; /* Space between items */
+    background: #333;      /* Dark background */
+    color: #fff;           /* White text */
+    padding: 10px 20px;    /* Padding around the content */
+    min-height: 70px;      /* Minimum height */
+}
+
+header h1 {
+    font-size: 30px; /* Updated font size */
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+/* static/css/style.css */
+.night {
+    background-color: #333;
+    color: #ccc;
+}
+
+.night header {
+    background: #222;
+    color: #ccc;
+}
+
+.night header a {
+    color: #ccc;
+}
+
+.night .container {
+    background-color: #333;
+}
+/* Day/Night Mode Toggle Button */
+.toggle-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #555;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+
+.toggle-btn::before {
+ /* Sun icon */
+    position: absolute;
+    left: 20px;
+    line-height: 25px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-btn.night-mode::before {  /* Moon icon */
+    transform: translateX(100px); /* Slide icon to the right */
+}
+
+.toggle-btn:hover {
+    background-color: #666; /* Darker shade when hovered */
+}
+
+
+/* Video Element Styling */
+video {
+    margin-top: 5%;
+    margin-left: 0%;
+    width: 100%; /* Full container width */
+    max-width: 650px; /* Maximum width of the video */
+    height: 450px; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+
+}
+
+/* Styling for the Record Button with 'record_btn' class */
+.record_btn {
+    margin-top: 0%;
+    font-size: 16px;                /* Sets the text size inside the button */
+    padding: 12px 24px;             /* Adds padding inside the button for a better touch area */
+    color: white;                   /* Sets the text color to white */
+    background-color: #333;      /* Sets a red background indicating recording action */
+    border: none;
+    display: block;                   /* No borders to maintain a modern look */
+    border-radius: 10px;            /* Rounded corners for a softer, more modern appearance */
+    cursor: pointer;                /* Changes the cursor to a pointer to indicate it's clickable */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions for hover effects */
+}
+
+.record_btn:hover {
+    background-color: #504f4f;      /* Darkens the background on hover to provide user feedback */
+    transform: scale(1.05);         /* Slightly enlarges the button when hovered */
+}
+
+.night .record_btn {
+    background-color: #ccc; /* Darker red in night mode for the record button */
+    color: #333;
+}
+
+.night .record_btn:hover {
+    background-color: #ccc; /* Even darker red on hover in night mode */
+}
+.video-container {
+    flex: 1; /* Allows the video container to grow and shrink */
+    padding-right: 20px; /* Adds space between the video and the text container */
+    height: 300px;
+}
+
+.text-container {
+    flex: 1; /* Allows the text container to grow and shrink */
+    background-color: #fff; /* Makes the text container visibly distinct */
+    margin-top: 2.5%;
+    margin-right: 2%;
+    padding: 30px;
+    border-radius: 8px; /* Optional: adds rounded corners to the text container */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
+    height: 420px; /* Optional: matches the height of the video */
+    overflow-y: auto; /* Allows scrolling within the container if content is too long */
+    overflow-x: hidden;
+}
+
+.text-container h1{
+    font-size:large;
+}
+
+.text-container h2{
+    font-size: medium;
+}
+
+/* Correcting night mode styles for text and video containers */
+.night .text-container {
+    background-color: #333; /* This will apply when night mode is active */
+}
+
+.night .video-container {
+    background-color: #333; /* This will apply when night mode is active */
+    border-color: #ccc;
+}

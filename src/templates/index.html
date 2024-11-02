@@ -1,0 +1,31 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header_top">
+            <h1>Facial Recognition AI</h1>
+            <button id="mode-toggle" class="toggle-btn" onclick="toggleMode()">Day Mode 🌞</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="video-container">
+            <video id="video" width="640" height="480" autoplay controls></video>
+            <button id="recordButton" class="record_btn">Start</button>
+        </div>
+        <div class="text-container">
+            <h1>Emotions: Happy</h1>
+            <h2>Respond with a Smile: Smiling back is a simple, natural response to someone who looks happy. Even if you’re unsure of the reason, smiling in return shows that you’re receptive and positive.</h2>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
