@@ -4,13 +4,13 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 ENV PYTHONFAULTHANDLER 1
 
-WORKDIR /code
+WORKDIR /src
 
 COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-COPY . .
+COPY . /src
 
 EXPOSE 5001
 
