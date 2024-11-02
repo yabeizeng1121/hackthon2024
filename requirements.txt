@@ -1,0 +1,6 @@
+Flask
+opencv-python
+deepface
+threading2
+python-dotenv
+openai
