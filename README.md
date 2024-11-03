@@ -5,8 +5,14 @@
 ## Background
 Alexithymia is a condition which makes it difficult for individual to identify, experience and express emotions. One in 10 people in the general population have Alexithymia (Parker et al. 2008), while it is also highly prevalent among individuals with autism spectrum disorder (ASD), ranging from 50% to 85%. Alexithymia conditions also tend to be highly associated with other psychiatric groups such as individuals with depression and anxiety symptoms (Bankier et al. 2001; McGillivray et al. 2017). In a workforce setting, Alexithymia may manifest in various ways that may impact job performance and interpersonal relationships. Studies have shown correlation between higher professional burnout levels and decreased ability in differentiating interlocutors emotions as well as decreased willingness in involving conversations (Chernus et al. 2021). 
 
-## Project Goal
+## Project Goal / Solution
 The goal of the project is to develop an Application to support people with Alexithymia conditions in identifying facial expressions of colleagues and employers in professional settings. Through accurately labeling the real-time facial expressions of interlocutors as well as providing appropriate suggestions for verbal and behavioral responses, the Application seeks to enhance interpersonal communications and interactions in workplace settings. Ultimately, this tool aims to remove impediment for people with Alexithymia conditions and foster more inclusive work atmosphere. 
+
+## System Architecture / Tech Stack
+
+![System Architecure](https://github.com/user-attachments/assets/3f3456d1-a78b-4aa0-baf4-a372755ffe2f)
+
+Flask Web App using OpenCV, DeepFace, and OpenAI w/ QuotientAI 
 
 ## Function of App
 
