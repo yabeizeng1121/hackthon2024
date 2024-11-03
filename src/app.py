@@ -113,7 +113,7 @@ def generate_frames():
             frame = cv2.resize(frame, (640, 480))
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(
-                gray_frame, scaleFactor=1.2, minNeighbors=7, minSize=(30, 30)
+                gray_frame, scaleFactor=1.2, minNeighbors=10, minSize=(30, 30)
             )
 
             for x, y, w, h in faces:
