@@ -16,6 +16,9 @@ SYSTEM_PROMPT = "You are helping individuals who don't know how to read emotions
 client = OpenAI(
     api_key=os.getenv("OPENAI_KEY"),
 )
+# define video input
+VIDEO_INPUT = os.getenv("VIDEO_INPUT")
+
 app = Flask(__name__)
 
 # Load face cascade classifier
@@ -23,23 +26,24 @@ face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 )
 
-# Global variables
 cap = None
 is_recording = False
 frame_count = 0
-emotion_cache = None  # Cache to store the last detected emotion
+emotion_cache = None
 emotion_average = []
-dominant_emotion_result = None  # Store the last dominant emotion result
+dominant_emotion_result = None
 
 
 @app.route("/toggle_recording", methods=["POST"])
 def toggle_recording():
+    """toggle recordings for video input"""
     global is_recording, cap
     is_recording = not is_recording
 
     if is_recording:
-        # Initialize camera when starting recording
-        cap = cv2.VideoCapture(0)
+        # initialize camera when starting recording
+        os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "rtsp_transport;udp"
+        cap = cv2.VideoCapture(VIDEO_INPUT)
         if not cap.isOpened():
             is_recording = False
             return jsonify({"recording": False, "error": "Failed to open camera"})
@@ -92,6 +96,7 @@ def calculate_dominant_emotion():
 
 
 def generate_frames():
+    """generate frames with the emption"""
     global is_recording, cap, frame_count, emotion_cache
 
     while True:
@@ -108,7 +113,7 @@ def generate_frames():
             frame = cv2.resize(frame, (640, 480))
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(
-                gray_frame, scaleFactor=1.2, minNeighbors=10, minSize=(30, 30)
+                gray_frame, scaleFactor=1.2, minNeighbors=7, minSize=(30, 30)
             )
 
             for x, y, w, h in faces:
@@ -200,17 +205,20 @@ def get_dominant_emotion():
 
 @app.route("/")
 def index():
+    """entrypoint"""
     return render_template("index.html")
 
 
 @app.route("/video_feed")
 def video_feed():
+    """shows video feed"""
     return Response(
         generate_frames(), mimetype="multipart/x-mixed-replace; boundary=frame"
     )
 
 
 def cleanup():
+    """clean up"""
     global cap
     if cap is not None:
         cap.release()
@@ -219,4 +227,4 @@ def cleanup():
 atexit.register(cleanup)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(debug=True, port=os.getenv("PORT", default=8080))

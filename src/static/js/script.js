@@ -22,7 +22,6 @@ let recordingTimer = null;
 let emotionFetchInterval = null;
 
 
-// Add event listener to the control button
 document.addEventListener('DOMContentLoaded', function () {
     if (controlButton) {
         controlButton.addEventListener('click', toggleRecording);
@@ -36,7 +35,6 @@ function toggleRecording() {
 
     $.post('/toggle_recording', function (response) {
         if (response.error) {
-            // Handle error (e.g., camera failed to open)
             alert('Error: ' + response.error);
             isRecording = false;
             updateControlButton();
@@ -70,14 +68,12 @@ function toggleRecording() {
 }
 
 function startEmotionFetchInterval() {
-    // Only start the interval if it's not already running
     if (!emotionFetchInterval) {
         emotionFetchInterval = setInterval(fetchDominantEmotion, 5000);
     }
 }
 
 function stopEmotionFetchInterval() {
-    // Clear the interval if it's running
     if (emotionFetchInterval) {
         clearInterval(emotionFetchInterval);
         emotionFetchInterval = null;
@@ -103,7 +99,6 @@ function setLoadingState(loading) {
     }
 }
 
-// Recording timer functions
 function startRecordingTimer() {
     sessionTime = 0;
     updateTimer();
@@ -149,7 +144,6 @@ function fetchDominantEmotion() {
         });
 }
 
-// Optional: Add keyboard shortcut (spacebar)
 document.addEventListener('keydown', function (e) {
     if (e.code === 'Space' &&
         !['input', 'textarea'].includes(document.activeElement.tagName.toLowerCase())) {
@@ -158,5 +152,4 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
-// Debug logging for initialization
 console.log('Script loaded');
